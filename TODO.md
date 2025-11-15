@@ -1,0 +1,19 @@
+- [x] Update AdminDashboard.tsx: Change background to pastel gradient, update sidebar and cards with gradients, shadows, and hover effects
+- [x] Update AdminLogin.tsx: Apply pastel background, gradient buttons, and modern card styling
+- [x] Update CartPage.tsx: Redesign with pastel background, gradient buttons, and improved card layouts
+- [x] Update CreatePizza.tsx: Ensure consistent pastel theme, gradients, and responsive design
+- [x] Update CustomerDashboard.tsx: Update background, buttons, and cart section with professional gradients and shadows
+- [ ] Update ForgotPassword.tsx: Apply pastel background and gradient styling
+- [ ] Update Login.tsx: Redesign form with pastel background, gradient buttons, and modern touches
+- [ ] Update ManageBases.tsx: Update admin management page with consistent theme
+- [ ] Update ManageCheese.tsx: Apply pastel gradients and card styles
+- [ ] Update ManageOrder.tsx: Redesign order management with professional look
+- [ ] Update ManagePizzas.tsx: Update pizza management page styling
+- [ ] Update ManageSauces.tsx: Apply consistent pastel theme
+- [ ] Update ManageVeggies.tsx: Update veggie management with gradients and shadows
+- [ ] Update MyOrders.tsx: Redesign orders page with pastel background and modern cards
+- [ ] Update ResetPassowrd.tsx: Apply gradient buttons and pastel background
+- [ ] Update Signup.tsx: Update signup form with consistent styling
+- [ ] Update VerifyEmail.tsx: Apply pastel theme to verification page
+- [ ] Test all pages for visual consistency, responsiveness, and functionality
+- [ ] Verify navigation and interactions work smoothly with new styling

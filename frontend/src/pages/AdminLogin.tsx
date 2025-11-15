@@ -11,7 +11,7 @@ export default function AdminLogin() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e : any) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError("");
     setLoading(true);
@@ -26,7 +26,7 @@ export default function AdminLogin() {
 
       navigate("/admin/dashboard");
 
-    } catch (err : any) {
+    } catch (err: any) {
       if (err.response?.data?.message) {
         setError(err.response.data.message);
       } else {
@@ -38,46 +38,46 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="flex h-screen items-center justify-center bg-gray-100 px-4">
-      <div className="w-full max-w-md bg-white rounded-xl shadow-md p-6">
-        
-        <h1 className="text-2xl font-semibold text-center mb-6">
+    <div className="flex h-screen items-center justify-center bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50 px-4">
+      <div className="w-full max-w-md bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+
+        <h1 className="text-3xl font-extrabold text-center mb-8 text-gray-900">
           Admin Login
         </h1>
 
         {error && (
-          <div className="mb-4 p-2 bg-red-200 text-red-800 rounded">
+          <div className="mb-6 p-3 bg-red-200 text-red-800 rounded-xl font-medium">
             {error}
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-6">
 
           <div>
-            <label className="block mb-1 font-medium">Email</label>
+            <label className="block mb-2 font-bold text-gray-900">Email</label>
             <input
               type="email"
               value={mail}
               onChange={(e) => setMail(e.target.value)}
-              className="w-full p-2 border rounded-lg outline-none focus:ring focus:ring-blue-200"
+              className="w-full p-3 border-2 border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-pink-300 focus:border-pink-400 transition-all duration-300"
               required
             />
           </div>
 
           <div>
-            <label className="block mb-1 font-medium">Password</label>
+            <label className="block mb-2 font-bold text-gray-900">Password</label>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full p-2 border rounded-lg outline-none focus:ring focus:ring-blue-200"
+              className="w-full p-3 border-2 border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-purple-300 focus:border-purple-400 transition-all duration-300"
               required
             />
           </div>
 
           <button
             disabled={loading}
-            className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 transition disabled:opacity-50"
+            className="w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white py-3 rounded-xl font-bold hover:from-pink-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-pink-500/25 transform hover:scale-105 disabled:opacity-50 disabled:transform-none"
           >
             {loading ? "Logging in..." : "Login"}
           </button>

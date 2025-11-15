@@ -112,122 +112,124 @@ export default function CreatePizza() {
   };
 
   return (
-    <div className="p-6 max-w-2xl mx-auto">
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50 p-6">
+      <div className="max-w-2xl mx-auto bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
 
-      <h1 className="text-2xl font-semibold mb-6">Create Custom Pizza</h1>
+        <h1 className="text-3xl font-extrabold mb-8 text-gray-900 text-center">Create Custom Pizza</h1>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-6">
 
-        {/* Title */}
-        <div>
-          <label className="block mb-1 font-medium">Pizza Name</label>
-          <input
-            type="text"
-            required
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            className="w-full p-2 border rounded"
-          />
-        </div>
+          {/* Title */}
+          <div>
+            <label className="block mb-2 font-bold text-gray-900">Pizza Name</label>
+            <input
+              type="text"
+              required
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              className="w-full p-3 border-2 border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-pink-300 focus:border-pink-400 transition-all duration-300"
+            />
+          </div>
 
-        {/* Description */}
-        <div>
-          <label className="block mb-1 font-medium">Description</label>
-          <textarea
-            rows={3}
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            className="w-full p-2 border rounded"
-          />
-        </div>
+          {/* Description */}
+          <div>
+            <label className="block mb-2 font-bold text-gray-900">Description</label>
+            <textarea
+              rows={3}
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              className="w-full p-3 border-2 border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-purple-300 focus:border-purple-400 transition-all duration-300 resize-none"
+            />
+          </div>
 
-        {/* Base */}
-        <div>
-          <label className="block mb-1 font-medium">Choose Base</label>
-          <select
-            className="p-2 border rounded w-full"
-            value={baseId}
-            onChange={(e) => setBaseId(e.target.value)}
+          {/* Base */}
+          <div>
+            <label className="block mb-2 font-bold text-gray-900">Choose Base</label>
+            <select
+              className="w-full p-3 border-2 border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-pink-300 focus:border-pink-400 transition-all duration-300 bg-white"
+              value={baseId}
+              onChange={(e) => setBaseId(e.target.value)}
+            >
+              <option value="">None</option>
+              {bases.map((b) => (
+                <option key={b._id} value={b._id}>
+                  {b.name} (+₹{b.price})
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Sauce */}
+          <div>
+            <label className="block mb-2 font-bold text-gray-900">Choose Sauce</label>
+            <select
+              className="w-full p-3 border-2 border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-purple-300 focus:border-purple-400 transition-all duration-300 bg-white"
+              value={sauceId}
+              onChange={(e) => setSauceId(e.target.value)}
+            >
+              <option value="">None</option>
+              {sauces.map((s) => (
+                <option key={s._id} value={s._id}>
+                  {s.name} (+₹{s.price})
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Cheese */}
+          <div>
+            <label className="block mb-2 font-bold text-gray-900">Choose Cheese</label>
+            <select
+              className="w-full p-3 border-2 border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-pink-300 focus:border-pink-400 transition-all duration-300 bg-white"
+              value={cheeseId}
+              onChange={(e) => setCheeseId(e.target.value)}
+            >
+              <option value="">None</option>
+              {cheeses.map((c) => (
+                <option key={c._id} value={c._id}>
+                  {c.name} (+₹{c.price})
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Veggies */}
+          <div>
+            <label className="block mb-2 font-bold text-gray-900">Choose Veggies</label>
+            <select
+              className="w-full p-3 border-2 border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-purple-300 focus:border-purple-400 transition-all duration-300 bg-white"
+              multiple
+              value={veggieIds}
+              onChange={(e) =>
+                setVeggieIds(
+                  Array.from(e.target.selectedOptions, (opt) => opt.value)
+                )
+              }
+            >
+              <option value="">None</option>
+              {veggies.map((v) => (
+                <option key={v._id} value={v._id}>
+                  {v.name} (+₹{v.price})
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Price */}
+          <div className="bg-white/80 backdrop-blur-sm p-4 rounded-xl shadow-md text-center">
+            <p className="text-xl font-bold text-gray-900">Total Price: ₹{price}</p>
+          </div>
+
+          {/* Submit */}
+          <button
+            disabled={loading}
+            className="w-full py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-xl font-bold hover:from-pink-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-pink-500/25 transform hover:scale-105 disabled:opacity-50 disabled:transform-none"
           >
-            <option value="">None</option>
-            {bases.map((b) => (
-              <option key={b._id} value={b._id}>
-                {b.name} (+₹{b.price})
-              </option>
-            ))}
-          </select>
-        </div>
+            {loading ? "Creating..." : "Create Pizza"}
+          </button>
 
-        {/* Sauce */}
-        <div>
-          <label className="block mb-1 font-medium">Choose Sauce</label>
-          <select
-            className="p-2 border rounded w-full"
-            value={sauceId}
-            onChange={(e) => setSauceId(e.target.value)}
-          >
-            <option value="">None</option>
-            {sauces.map((s) => (
-              <option key={s._id} value={s._id}>
-                {s.name} (+₹{s.price})
-              </option>
-            ))}
-          </select>
-        </div>
-
-        {/* Cheese */}
-        <div>
-          <label className="block mb-1 font-medium">Choose Cheese</label>
-          <select
-            className="p-2 border rounded w-full"
-            value={cheeseId}
-            onChange={(e) => setCheeseId(e.target.value)}
-          >
-            <option value="">None</option>
-            {cheeses.map((c) => (
-              <option key={c._id} value={c._id}>
-                {c.name} (+₹{c.price})
-              </option>
-            ))}
-          </select>
-        </div>
-
-        {/* Veggies */}
-        <div>
-          <label className="block mb-1 font-medium">Choose Veggies</label>
-          <select
-            className="p-2 border rounded w-full"
-            multiple
-            value={veggieIds}
-            onChange={(e) =>
-              setVeggieIds(
-                Array.from(e.target.selectedOptions, (opt) => opt.value)
-              )
-            }
-          >
-            <option value="">None</option>
-            {veggies.map((v) => (
-              <option key={v._id} value={v._id}>
-                {v.name} (+₹{v.price})
-              </option>
-            ))}
-          </select>
-        </div>
-
-        {/* Price */}
-        <div className="bg-gray-100 p-3 rounded border text-lg font-medium">
-          Total Price: ₹{price}
-        </div>
-
-        {/* Submit */}
-        <button
-          disabled={loading}
-          className="w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50"
-        >
-          {loading ? "Creating..." : "Create Pizza"}
-        </button>
-
-      </form>
+        </form>
+      </div>
     </div>
   );
 }

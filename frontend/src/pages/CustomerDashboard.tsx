@@ -104,38 +104,38 @@ export default function CustomerDashboard() {
   };
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-semibold mb-6">Customer Dashboard</h1>
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50 p-6">
+      <h1 className="text-3xl font-extrabold mb-8 text-gray-900 text-center">Customer Dashboard</h1>
 
-      <div className="flex items-center gap-4 mb-6">
+      <div className="flex flex-wrap items-center justify-center gap-4 mb-8">
         <button
           onClick={() => navigate("/customer/create-pizza")}
-          className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+          className="px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-xl font-bold hover:from-pink-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-pink-500/25 transform hover:scale-105"
         >
           Create Custom Pizza
         </button>
 
         <button
           onClick={() => window.scrollTo(0, document.body.scrollHeight)}
-          className="px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-black"
+          className="px-6 py-3 bg-gradient-to-r from-gray-600 to-gray-700 text-white rounded-xl font-bold hover:from-gray-700 hover:to-gray-800 transition-all duration-300 shadow-lg hover:shadow-gray-500/25 transform hover:scale-105"
         >
           🛒 View Cart
         </button>
       </div>
 
       {/* Pizza List */}
-      <h2 className="text-xl font-semibold mb-4">Available Pizzas</h2>
+      <h2 className="text-2xl font-bold mb-6 text-gray-900 text-center">Available Pizzas</h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
         {pizzas.map((p) => (
-          <div key={p._id} className="bg-white p-4 rounded-lg shadow border">
-            <h3 className="text-lg font-medium">{p.title}</h3>
-            <p className="text-gray-600 mb-2">{p.description}</p>
-            <p className="font-medium">₹{p.price}</p>
+          <div key={p._id} className="bg-white/80 backdrop-blur-sm p-6 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+            <h3 className="text-xl font-bold text-gray-900 mb-2">{p.title}</h3>
+            <p className="text-gray-600 mb-4">{p.description}</p>
+            <p className="text-2xl font-extrabold text-green-600 mb-4">₹{p.price}</p>
 
             <button
               onClick={() => addToCart(p)}
-              className="mt-3 w-full py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
+              className="w-full py-3 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-xl font-bold hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-lg hover:shadow-green-500/25 transform hover:scale-105"
             >
               Add to Cart
             </button>
@@ -144,37 +144,37 @@ export default function CustomerDashboard() {
       </div>
 
       {/* CART SECTION */}
-      <div className="mt-10 bg-white p-6 rounded-lg shadow">
-        <h2 className="text-xl font-semibold mb-4">Your Cart</h2>
+      <div className="bg-white/80 backdrop-blur-sm p-8 rounded-3xl shadow-xl">
+        <h2 className="text-2xl font-bold mb-6 text-gray-900 text-center">Your Cart</h2>
 
         {cart.length === 0 ? (
-          <p>Your cart is empty.</p>
+          <p className="text-gray-600 text-lg text-center">Your cart is empty.</p>
         ) : (
           <>
             {cart.map((item) => (
               <div
                 key={item.pizza._id}
-                className="flex justify-between items-center border p-3 rounded mb-3"
+                className="flex justify-between items-center bg-gray-50 p-4 rounded-xl mb-4 shadow-md"
               >
                 <div>
-                  <p className="font-medium">{item.pizza.title}</p>
-                  <p className="text-sm text-gray-500">
+                  <p className="font-bold text-gray-900">{item.pizza.title}</p>
+                  <p className="text-sm text-gray-600">
                     ₹{item.pizza.price} × {item.quantity}
                   </p>
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-3">
                   <button
-                    className="px-3 py-1 bg-gray-300 rounded"
+                    className="px-4 py-2 bg-gradient-to-r from-gray-400 to-gray-500 text-white rounded-xl font-bold hover:from-gray-500 hover:to-gray-600 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105"
                     onClick={() => updateQuantity(item.pizza._id, -1)}
                   >
                     -
                   </button>
 
-                  <span>{item.quantity}</span>
+                  <span className="px-4 py-2 bg-white rounded-xl font-semibold text-gray-900 shadow">{item.quantity}</span>
 
                   <button
-                    className="px-3 py-1 bg-gray-300 rounded"
+                    className="px-4 py-2 bg-gradient-to-r from-gray-400 to-gray-500 text-white rounded-xl font-bold hover:from-gray-500 hover:to-gray-600 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105"
                     onClick={() => updateQuantity(item.pizza._id, 1)}
                   >
                     +
@@ -183,8 +183,8 @@ export default function CustomerDashboard() {
               </div>
             ))}
 
-            <div className="bg-gray-100 p-4 rounded mt-4">
-              <h3 className="text-lg font-medium">
+            <div className="bg-gradient-to-r from-pink-100 to-purple-100 p-6 rounded-xl mt-6 shadow-md">
+              <h3 className="text-xl font-bold text-gray-900 text-center">
                 Total: ₹
                 {cart.reduce(
                   (acc, curr) => acc + curr.pizza.price * curr.quantity,
@@ -195,19 +195,21 @@ export default function CustomerDashboard() {
 
             <button
               onClick={placeOrder}
-              className="mt-6 w-full py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700"
+              className="mt-6 w-full py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-xl font-bold hover:from-orange-600 hover:to-orange-700 transition-all duration-300 shadow-lg hover:shadow-orange-500/25 transform hover:scale-105 text-xl"
             >
               Place Order
             </button>
           </>
         )}
 
-        <button
-          onClick={() => navigate("/customer/orders")}
-          className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700"
-        >
-          📦 My Orders
-        </button>
+        <div className="mt-6 text-center">
+          <button
+            onClick={() => navigate("/customer/orders")}
+            className="px-6 py-3 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-xl font-bold hover:from-purple-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-purple-500/25 transform hover:scale-105"
+          >
+            📦 My Orders
+          </button>
+        </div>
       </div>
     </div>
   );
